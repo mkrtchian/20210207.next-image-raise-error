@@ -1,4 +1,4 @@
-import { screen, render, fireEvent, act } from '@testing-library/react'
+import { screen, render, fireEvent, act, waitFor } from '@testing-library/react'
 import { Counter } from '../../pages/counter'
 
 describe('Counter', () => {
@@ -13,6 +13,6 @@ describe('Counter', () => {
     await act(async () => {
       fireEvent.click(screen.getByText('+', { selector: 'button' }))
     })
-    expect(screen.getByText('1', { selector: 'p' }))
+    await waitFor(() => expect(screen.getByText('1', { selector: 'p' })))
   })
 })
