@@ -7,10 +7,10 @@ describe('Counter', () => {
     expect(screen.getByText('0', { selector: 'p' }))
   })
 
-  it('Pressing `+` button increments the counter.', () => {
+  it('Pressing `+` button increments the counter.', async () => {
     render(<Counter />)
     expect(screen.getByText('0', { selector: 'p' }))
-    act(() => {
+    await act(async () => {
       fireEvent.click(screen.getByText('+', { selector: 'button' }))
     })
     expect(screen.getByText('1', { selector: 'p' }))
