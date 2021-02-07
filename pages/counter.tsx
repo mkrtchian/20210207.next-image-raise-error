@@ -14,6 +14,7 @@ export const Counter = (): JSX.Element => {
         <p>{titleString}</p>
         <button onClick={() => setCounter(c => c + 1)}>+</button>
       </div>
+      {/* following `Image` components raise an error. */}
       <Image src="/vercel.svg" alt="Vercel Logo" width="128" height="34" />
     </>
   )
