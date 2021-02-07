@@ -1,18 +1,16 @@
-import { screen, render, fireEvent, act, waitFor } from '@testing-library/react'
+import { screen, render, fireEvent, waitFor } from '@testing-library/react'
 import { Counter } from '../../pages/counter'
 
 describe('Counter', () => {
-  it('Initial Value is 0', () => {
+  it('Initial Value is 0', async () => {
     render(<Counter />)
-    expect(screen.getByText('0', { selector: 'p' }))
+    await waitFor(() => expect(screen.getByText('0', { selector: 'p' })))
   })
 
   it('Pressing `+` button increments the counter.', async () => {
     render(<Counter />)
     expect(screen.getByText('0', { selector: 'p' }))
-    await act(async () => {
-      fireEvent.click(screen.getByText('+', { selector: 'button' }))
-    })
+    fireEvent.click(screen.getByText('+', { selector: 'button' }))
     await waitFor(() => expect(screen.getByText('1', { selector: 'p' })))
   })
 })
